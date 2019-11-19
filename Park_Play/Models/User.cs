@@ -11,7 +11,7 @@ namespace Park_Play.Models
     {
         [Key]
 
-        public int Id { get; set; }
+        public int UserId { get; set; }
 
         [Required]
         [Display(Name = "First Name")]
@@ -39,14 +39,14 @@ namespace Park_Play.Models
 
         [Required]
         [Display(Name = "ZIP Code")]
-        public int zipcode { get; set; }
+        public int zipCode { get; set; }
 
         [Required]
         [Display(Name = "Phone Number")]
-        public string PhoneNumber { get; set; }
+        public string phoneNumber { get; set; }
 
         [Display(Name = "Profile Picture")]
-        public byte[] ProfilePicture { get; set; }
+        public byte[] profilePicture { get; set; }
 
         public float lat { get; set; }
         public float lng { get; set; }

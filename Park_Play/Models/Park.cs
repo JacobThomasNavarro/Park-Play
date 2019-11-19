@@ -10,11 +10,11 @@ namespace Park_Play.Models
     {
         [Key]
 
-        public int Id { get; set; }
+        public int ParkId { get; set; }
 
         [Required]
         [Display(Name = "Park")]
-        public string ParkName { get; set; }
+        public string parkName { get; set; }
 
         [Required]
         [Display(Name = "Street Address")]
@@ -30,11 +30,11 @@ namespace Park_Play.Models
 
         [Required]
         [Display(Name = "ZIP Code")]
-        public int zipcode { get; set; }
+        public int zipCode { get; set; }
 
         [Required]
         [Display(Name = "Contact Number")]
-        public double ContactNumber { get; set; }
+        public double contactNumber { get; set; }
 
         public float lat { get; set; }
         public float lng { get; set; }

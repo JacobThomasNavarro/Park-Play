@@ -20,6 +20,8 @@ namespace Park_Play.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<User> Users { get; set; }
+        public DbSet<Park> Parks { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
