@@ -256,10 +256,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Parks\Create.cshtml" />
+    <Content Include="Views\Parks\Delete.cshtml" />
+    <Content Include="Views\Parks\Details.cshtml" />
+    <Content Include="Views\Parks\Edit.cshtml" />
+    <Content Include="Views\Parks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Parks\" />
     <Folder Include="Views\PlayEvents\" />
     <Folder Include="Views\SkillSportUsers\" />
     <Folder Include="Views\Sports\" />
