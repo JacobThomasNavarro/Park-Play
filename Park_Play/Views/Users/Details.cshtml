@@ -6,77 +6,111 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>User</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.firstName)
-        </dt>
+<style>
+    /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+    #map {
+        height: 400px;
+        width: 400px;
+        margin: 20px;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+        height: 100%;
+        margin: 20px;
+        padding: 10px;
+    }
+</style>
+    <div id="map"></div>
+<script>
+      var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: @Model.lat, lng: @Model.lng},
+            zoom: 8
+        });
+        var marker = new google.maps.Marker({
+            position: {
+                lat: @Model.lat,
+                lng: @Model.lng
+            },
+            map: map
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=@APIKeys.GeoCode&callback=initMap"
+            async defer></script>
 
-        <dd>
-            @Html.DisplayFor(model => model.firstName)
-        </dd>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.firstName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.lastName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.firstName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.lastName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.lastName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.emailAddress)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.lastName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.emailAddress)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.emailAddress)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.streetAddress)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.emailAddress)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.streetAddress)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.streetAddress)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.city)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.streetAddress)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.city)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.city)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.stateCode)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.city)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.stateCode)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.stateCode)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.zipCode)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.stateCode)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.zipCode)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.zipCode)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.phoneNumber)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.zipCode)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.phoneNumber)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.phoneNumber)
+            </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            <dd>
+                @Html.DisplayFor(model => model.phoneNumber)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>

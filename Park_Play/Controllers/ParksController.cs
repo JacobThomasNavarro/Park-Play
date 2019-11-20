@@ -49,10 +49,9 @@ namespace Park_Play.Controllers
                 string userAddress = System.Web.HttpUtility.UrlEncode(
                     park.streetAddress + " " +
                     park.city + " " +
-                    park.stateCode + " " +
-                    park.zipCode);
+                    park.stateCode);
 
-                string apiKey = APIKeys.GoogleMaps;
+                string apiKey = "&key="+APIKeys.GoogleMaps;
 
 
                 HttpClient client = new HttpClient();

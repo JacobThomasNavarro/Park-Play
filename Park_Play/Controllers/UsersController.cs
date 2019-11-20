@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.AspNet.Identity;
+using Newtonsoft.Json.Linq;
 using Park_Play.Models;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,7 @@ namespace Park_Play.Controllers
         // GET: Users/Create
         public ActionResult Create()
         {
-            User users = new User();
+            User user = new User();
             return View();
         }
 
@@ -45,15 +46,16 @@ namespace Park_Play.Controllers
             try
             {
                 // TODO: Add insert logic here
+                //string id = User.Identity.GetUserId();
+                //user.ApplicationId = id;
                 context.Users.Add(user);
                 string requesturl = "https://maps.googleapis.com/maps/api/geocode/json?address=";
                 string userAddress = System.Web.HttpUtility.UrlEncode(
                     user.streetAddress + " " +
                     user.city + " " +
-                    user.stateCode + " " +
-                    user.zipCode);
+                    user.stateCode);
 
-                string apiKey = APIKeys.GoogleMaps;
+                string apiKey = "&key="+APIKeys.GoogleMaps;
 
 
                 HttpClient client = new HttpClient();

@@ -4,11 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Milwaukee Area Parks</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -53,9 +51,7 @@
             @Html.DisplayFor(modelItem => item.contactNumber)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ParkId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ParkId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ParkId })
+            @Html.ActionLink("View Park Details", "Details", new { id=item.ParkId })
         </td>
     </tr>
 }
