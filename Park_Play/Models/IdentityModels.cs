@@ -22,6 +22,12 @@ namespace Park_Play.Models
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Park> Parks { get; set; }
+        public DbSet<SkillSportUser> SkillSportUsers { get; set; }
+        public DbSet<Sport> Sports { get; set; }
+        public DbSet<ParkSport> ParkSports { get; set; }
+        public DbSet<PlayEvent> PlayEvents { get; set; }
+        public DbSet<UserPlayEvent> UserPlayEvents { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

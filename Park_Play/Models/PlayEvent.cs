@@ -28,10 +28,10 @@ namespace Park_Play.Models
 
         [ForeignKey("Park")]
         public int ParkId { get; set; }
-        public Park park { get; set; }
+        public Park Park { get; set; }
 
         [ForeignKey("Sport")]
         public int SportId { get; set; }
-        public Sport sport { get; set; }
+        public Sport Sport { get; set; }
     }
 }

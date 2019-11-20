@@ -9,14 +9,16 @@ namespace Park_Play.Models
 {
     public class SkillSportUser
     {
+        [Key]
+        public int SkillSportUserId { get; set; }
         public int skillLevel { get; set; }
 
         [ForeignKey("User")]
         public int UserId { get; set; }
-        public User user { get; set; }
+        public User User { get; set; }
 
         [ForeignKey("Sport")]
         public int SportId { get; set; }
-        public Sport sport { get; set; }
+        public Sport Sport { get; set; }
     }
 }
