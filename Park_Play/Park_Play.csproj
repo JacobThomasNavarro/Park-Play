@@ -176,6 +176,7 @@
     <Compile Include="Controllers\ParksController.cs" />
     <Compile Include="Controllers\PlayEventsController.cs" />
     <Compile Include="Controllers\SkillSportUsersController.cs" />
+    <Compile Include="Controllers\SportsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -261,6 +262,7 @@
     <Folder Include="Views\Parks\" />
     <Folder Include="Views\PlayEvents\" />
     <Folder Include="Views\SkillSportUsers\" />
+    <Folder Include="Views\Sports\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
