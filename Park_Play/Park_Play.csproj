@@ -261,11 +261,19 @@
     <Content Include="Views\Parks\Details.cshtml" />
     <Content Include="Views\Parks\Edit.cshtml" />
     <Content Include="Views\Parks\Index.cshtml" />
+    <Content Include="Views\PlayEvents\Create.cshtml" />
+    <Content Include="Views\PlayEvents\Delete.cshtml" />
+    <Content Include="Views\PlayEvents\Details.cshtml" />
+    <Content Include="Views\PlayEvents\Edit.cshtml" />
+    <Content Include="Views\PlayEvents\Index.cshtml" />
+    <Content Include="Views\SkillSportUsers\Create.cshtml" />
+    <Content Include="Views\SkillSportUsers\Delete.cshtml" />
+    <Content Include="Views\SkillSportUsers\Details.cshtml" />
+    <Content Include="Views\SkillSportUsers\Edit.cshtml" />
+    <Content Include="Views\SkillSportUsers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\PlayEvents\" />
-    <Folder Include="Views\SkillSportUsers\" />
     <Folder Include="Views\Sports\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>
