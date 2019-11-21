@@ -14,10 +14,13 @@ namespace Park_Play.Migrations
 
         protected override void Seed(Park_Play.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            context.ParkSports.Add(new Models.ParkSport
+            {
+                ParkSportId = 1,
+                ParkId = 1,
+                SportId = 1,
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            });
         }
     }
 }

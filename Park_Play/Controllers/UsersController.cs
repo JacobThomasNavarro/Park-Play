@@ -23,7 +23,6 @@ namespace Park_Play.Controllers
 
         public ActionResult GetSportSkillLvl()
         {
-            //User user = context.Users.Where(u => u.UserId == id).FirstOrDefault();
             var sports = context.Sports.AsNoTracking().ToList();
             var skillLevels = new List<SkillSportUser>();
             foreach (var sport in sports)
@@ -44,9 +43,18 @@ namespace Park_Play.Controllers
         {
             string id = User.Identity.GetUserId();
             User user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
-
-
-            return View();
+            for(int i = 0; i < viewModel.sportSkillLevels.Count; i++)
+            {
+                SkillSportUser skillSportUser = new SkillSportUser()
+                {
+                    skillLevel = viewModel.sportSkillLevels[i].skillLevel,
+                    SportId = viewModel.sportSkillLevels[i].SportId,
+                    UserId = user.UserId
+                };
+                context.SkillSportUsers.Add(skillSportUser);
+            }
+            context.SaveChanges();
+            return RedirectToAction("Index", "Home", user);
 
 
 
@@ -71,6 +79,7 @@ namespace Park_Play.Controllers
             User user = new User();
             return View();
         }
+          
 
         // POST: Users/Create
         [HttpPost]
@@ -81,7 +90,7 @@ namespace Park_Play.Controllers
                 // TODO: Add insert logic here
                 //string id = User.Identity.GetUserId();
                 //user.ApplicationId = id;
-                context.Users.Add(user);
+
                 string requesturl = "https://maps.googleapis.com/maps/api/geocode/json?address=";
                 string userAddress = System.Web.HttpUtility.UrlEncode(
                     user.streetAddress + " " +
@@ -96,8 +105,11 @@ namespace Park_Play.Controllers
                 JObject map = JObject.Parse(response);
                 user.lat = (float)map["results"][0]["geometry"]["location"]["lat"];
                 user.lng = (float)map["results"][0]["geometry"]["location"]["lng"];
+                string id = User.Identity.GetUserId();
+                user.ApplicationId = id;
+                context.Users.Add(user);
                 context.SaveChanges();
-                return RedirectToAction("Details", "Users", user);
+                return RedirectToAction("GetSportSkillLvl", "Users", user);
             }
             catch
             {
