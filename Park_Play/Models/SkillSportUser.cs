@@ -11,6 +11,8 @@ namespace Park_Play.Models
     {
         [Key]
         public int SkillSportUserId { get; set; }
+
+        [Range(0,5)]
         public int skillLevel { get; set; }
 
         [ForeignKey("User")]

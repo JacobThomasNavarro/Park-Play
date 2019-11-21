@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNet.Identity;
-using Park_Play.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,45 +9,33 @@ namespace Park_Play.Controllers
 {
     public class SkillSportUsersController : Controller
     {
-        ApplicationDbContext context;
-
-        public SkillSportUsersController()
-        {
-            context = new ApplicationDbContext();
-        }
+        // GET: SkillSportUsers
         public ActionResult Index()
         {
-            return View(context.SkillSportUsers.ToList());
-        }
-
-        // GET: Users/Details/5
-        public ActionResult Details(int id)
-        {
-            SkillSportUser skillSportUser = context.SkillSportUsers.Where(u => u.SkillSportUserId == id).FirstOrDefault();
-            return View(skillSportUser);
-        }
-
-        // GET: Users/Create
-        public ActionResult Create()
-        {
-            SkillSportUser skillSportUser = new SkillSportUser();
             return View();
         }
 
-        // POST: Users/Create
+        // GET: SkillSportUsers/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+
+        // GET: SkillSportUsers/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: SkillSportUsers/Create
         [HttpPost]
-        public ActionResult Create(SkillSportUser skillSportUser)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
-                context.SkillSportUsers.Add(skillSportUser);
-                context.SaveChanges();
+                // TODO: Add insert logic here
 
-                string id = User.Identity.GetUserId();
-                var user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
-                skillSportUser.SkillSportUserId = user.UserId;
-                context.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -56,25 +43,21 @@ namespace Park_Play.Controllers
             }
         }
 
-        // GET: Users/Edit/5
+        // GET: SkillSportUsers/Edit/5
         public ActionResult Edit(int id)
         {
-           SkillSportUser skillSportUser = context.SkillSportUsers.Where(u => u.SkillSportUserId == id).FirstOrDefault();
-            return View(skillSportUser);
+            return View();
         }
 
-        // POST: Users/Edit/5
+        // POST: SkillSportUsers/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, SkillSportUser skillSportUser)
+        public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add update logic here
-                SkillSportUser editedSkillSportUser = context.SkillSportUsers.Where(c => c.SkillSportUserId == id).FirstOrDefault();
-                editedSkillSportUser.skillLevel = skillSportUser.skillLevel;
-                context.SaveChanges();
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -82,23 +65,20 @@ namespace Park_Play.Controllers
             }
         }
 
-        // GET: Users/Delete/5
+        // GET: SkillSportUsers/Delete/5
         public ActionResult Delete(int id)
         {
-            SkillSportUser skillSportUser = context.SkillSportUsers.Where(u => u.SkillSportUserId == id).FirstOrDefault();
-            return View(skillSportUser);
+            return View();
         }
 
-        // POST: Users/Delete/5
+        // POST: SkillSportUsers/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, SkillSportUser skillSportUser)
+        public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
-                SkillSportUser skillSportUserToDelete = context.SkillSportUsers.Where(u => u.SkillSportUserId == id).FirstOrDefault();
-                context.SkillSportUsers.Remove(skillSportUserToDelete);
-                context.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             catch

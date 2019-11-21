@@ -19,6 +19,39 @@ namespace Park_Play.Controllers
         {
             context = new ApplicationDbContext();
         }
+
+
+        public ActionResult GetSportSkillLvl()
+        {
+            //User user = context.Users.Where(u => u.UserId == id).FirstOrDefault();
+            var sports = context.Sports.AsNoTracking().ToList();
+            var skillLevels = new List<SkillSportUser>();
+            foreach (var sport in sports)
+            {
+                skillLevels.Add(new SkillSportUser { SportId = sport.SportId, Sport = sport });
+            }
+            UserSportViewModel userSportViewModel = new UserSportViewModel()
+            { 
+                SportList = sports, 
+                sportSkillLevels = skillLevels
+            };
+            
+            return View(userSportViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult GetSportSkillLvl(UserSportViewModel viewModel)
+        {
+            string id = User.Identity.GetUserId();
+            User user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
+
+
+            return View();
+
+
+
+        }
+
         // GET: Users
         public ActionResult Index()
         {

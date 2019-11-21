@@ -185,6 +185,10 @@
     <Compile Include="Migrations\201911200039239_Initial.Designer.cs">
       <DependentUpon>201911200039239_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911211556286_SkillLevelMinMax.cs" />
+    <Compile Include="Migrations\201911211556286_SkillLevelMinMax.Designer.cs">
+      <DependentUpon>201911211556286_SkillLevelMinMax.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -196,6 +200,8 @@
     <Compile Include="Models\Sport.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserPlayEvent.cs" />
+    <Compile Include="Models\SportSkill.cs" />
+    <Compile Include="Models\UserSportViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -266,11 +272,6 @@
     <Content Include="Views\PlayEvents\Details.cshtml" />
     <Content Include="Views\PlayEvents\Edit.cshtml" />
     <Content Include="Views\PlayEvents\Index.cshtml" />
-    <Content Include="Views\SkillSportUsers\Create.cshtml" />
-    <Content Include="Views\SkillSportUsers\Delete.cshtml" />
-    <Content Include="Views\SkillSportUsers\Details.cshtml" />
-    <Content Include="Views\SkillSportUsers\Edit.cshtml" />
-    <Content Include="Views\SkillSportUsers\Index.cshtml" />
     <Content Include="Views\Sports\Create.cshtml" />
     <Content Include="Views\Sports\Delete.cshtml" />
     <Content Include="Views\Sports\Details.cshtml" />
@@ -281,9 +282,12 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\GetSportSkillLvl.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\SkillSportUsers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -304,6 +308,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201911200039239_Initial.resx">
       <DependentUpon>201911200039239_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911211556286_SkillLevelMinMax.resx">
+      <DependentUpon>201911211556286_SkillLevelMinMax.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,32 @@
+﻿@model Park_Play.Models.UserSportViewModel
+
+@{
+    ViewBag.Title = "GetSportSkillLvl";
+}
+
+<h2>GetSportSkillLvl</h2>
+
+@using (Html.BeginForm())
+{
+    for (int i = 0; i < Model.SportList.Count; i++)
+    {
+        <div class="row">
+            <div class="col-6">
+                @Html.DisplayFor(m => Model.SportList[i].sportName)
+            </div>
+            <div class="col-6">
+                @Html.EditorFor(m => Model.sportSkillLevels[i].skillLevel)
+            </div>
+        </div>
+        @Html.HiddenFor(m => Model.sportSkillLevels[i].SportId)
+        @Html.HiddenFor(m => Model.sportSkillLevels[i].Sport.sportName)
+        @Html.HiddenFor(m => Model.sportSkillLevels[i].Sport.SportId)
+        @Html.HiddenFor(m => Model.SportList[i].sportName)
+        @Html.HiddenFor(m => Model.SportList[i].SportId)
+    }
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Submit" class="btn btn-default btn-prim" />
+        </div>
+    </div>
+}
