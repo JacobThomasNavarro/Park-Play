@@ -14,13 +14,7 @@ namespace Park_Play.Migrations
 
         protected override void Seed(Park_Play.Models.ApplicationDbContext context)
         {
-            context.ParkSports.Add(new Models.ParkSport
-            {
-                ParkSportId = 1,
-                ParkId = 1,
-                SportId = 1,
 
-            });
         }
     }
 }

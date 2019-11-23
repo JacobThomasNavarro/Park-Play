@@ -1,0 +1,31 @@
+﻿@model Park_Play.Models.ParkSportViewModel
+
+@{
+    ViewBag.Title = "ParkSportView";
+}
+
+<h2>Sports at @Html.DisplayFor(model => model.ParkName)</h2>
+<br />
+<table class="table">
+    @*<tr>
+        <td>
+            @Html.DisplayNameFor(model => model.ParkName)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.SportsList[0].sportName)
+        </td>
+    </tr>*@
+@*@for(int i = 0; i < Model.SportsList.Count; i++)*@
+<tr>
+    @*<td>
+        @Html.DisplayFor(model => model.ParkName)
+    </td>*@
+    @for (int i = 0; i < Model.SportsList.Count; i++)
+    {
+        <td>
+            @Html.DisplayFor(model => model.SportsList[i].sportName)
+        </td>
+    }
+</tr>
+</table>
+@Html.ActionLink("Back to Parks", "Index", "Parks")

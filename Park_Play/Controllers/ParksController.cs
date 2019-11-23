@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.AspNet.Identity;
+using Newtonsoft.Json.Linq;
 using Park_Play.Models;
 using System;
 using System.Collections.Generic;
@@ -23,10 +24,29 @@ namespace Park_Play.Controllers
             return View(context.Parks.ToList());
         }
 
+        public ActionResult ParkSportView(int id)
+        {
+            Park park = context.Parks.Where(p => p.ParkId == id).FirstOrDefault();
+            ParkSportViewModel parkSportView = new ParkSportViewModel() {ParkName = "", SportsList = new List<Sport>()};
+            parkSportView.ParkName = park.parkName;
+            List<ParkSport> parkSport = context.ParkSports.Where(p => p.ParkId == park.ParkId).ToList();
+            List<Sport> sportList = new List<Sport>();
+            foreach (ParkSport model in parkSport)
+            {
+                var sport = context.Sports.Where(s => s.SportId == model.SportId).FirstOrDefault();
+                sportList.Add(sport);
+            }
+            foreach (Sport model in sportList)
+            {
+                parkSportView.SportsList.Add(model);
+            }
+            return View(parkSportView);
+        }
+
         // GET: Users/Details/5
         public ActionResult Details(int id)
         {
-            Park park = context.Parks.Where(u => u.ParkId == id).FirstOrDefault();
+            Park park = context.Parks.Where(p => p.ParkId == id).FirstOrDefault();
             return View(park);
         }
 

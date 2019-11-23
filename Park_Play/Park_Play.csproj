@@ -189,12 +189,21 @@
     <Compile Include="Migrations\201911211556286_SkillLevelMinMax.Designer.cs">
       <DependentUpon>201911211556286_SkillLevelMinMax.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911212144519_ListToParkModel.cs" />
+    <Compile Include="Migrations\201911212144519_ListToParkModel.Designer.cs">
+      <DependentUpon>201911212144519_ListToParkModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911222003436_Change.cs" />
+    <Compile Include="Migrations\201911222003436_Change.Designer.cs">
+      <DependentUpon>201911222003436_Change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Park.cs" />
     <Compile Include="Models\ParkSport.cs" />
+    <Compile Include="Models\ParkSportViewModel.cs" />
     <Compile Include="Models\PlayEvent.cs" />
     <Compile Include="Models\SkillSportUser.cs" />
     <Compile Include="Models\Sport.cs" />
@@ -283,6 +292,7 @@
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\GetSportSkillLvl.cshtml" />
+    <Content Include="Views\Parks\ParkSportView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -311,6 +321,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911211556286_SkillLevelMinMax.resx">
       <DependentUpon>201911211556286_SkillLevelMinMax.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911212144519_ListToParkModel.resx">
+      <DependentUpon>201911212144519_ListToParkModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911222003436_Change.resx">
+      <DependentUpon>201911222003436_Change.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
