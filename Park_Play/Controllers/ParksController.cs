@@ -26,8 +26,8 @@ namespace Park_Play.Controllers
 
         public ActionResult ParkSportView(int id)
         {
-            Park park = context.Parks.Where(p => p.ParkId == id).FirstOrDefault();
             ParkSportViewModel parkSportView = new ParkSportViewModel() {ParkName = "", SportsList = new List<Sport>()};
+            Park park = context.Parks.Where(p => p.ParkId == id).FirstOrDefault();
             parkSportView.ParkName = park.parkName;
             List<ParkSport> parkSport = context.ParkSports.Where(p => p.ParkId == park.ParkId).ToList();
             List<Sport> sportList = new List<Sport>();

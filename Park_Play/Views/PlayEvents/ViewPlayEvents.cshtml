@@ -1,24 +1,34 @@
 ﻿@model IEnumerable<Park_Play.Models.PlayEvent>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ViewPlayEvents";
 }
 
-<h2>Index</h2>
+<h2>Play Events</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.skillLevel)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.PlayDate)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.StartTime)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.numberOfPlayers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Park.parkName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sport.sportName)
         </th>
         <th></th>
     </tr>
@@ -29,15 +39,22 @@
             @Html.DisplayFor(modelItem => item.skillLevel)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.PlayDate)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.StartTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndTime)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.numberOfPlayers)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PlayEventId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PlayEventId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PlayEventId })
+            @Html.DisplayFor(modelItem => item.Park.parkName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sport.sportName)
         </td>
     </tr>
 }

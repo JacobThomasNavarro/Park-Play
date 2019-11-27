@@ -1,4 +1,4 @@
-﻿@model Park_Play.Models.PlayEvent
+﻿@model Park_Play.Models.ParkEventViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -7,14 +7,32 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <h4>PlayEvent</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Park.parkName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Park.parkName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Park.parkName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @Html.HiddenFor(model => model.Park.ParkId)
+    
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SportsList, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Sport.SportId, new SelectList(ViewBag.Results, "SportId", "sportName"), new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Sport.SportId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
     <div class="form-group">
         @Html.LabelFor(model => model.PlayDate, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">

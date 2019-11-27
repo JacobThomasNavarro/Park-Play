@@ -197,11 +197,25 @@
     <Compile Include="Migrations\201911222003436_Change.Designer.cs">
       <DependentUpon>201911222003436_Change.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911232148442_UpdatedPlayEventModel.cs" />
+    <Compile Include="Migrations\201911232148442_UpdatedPlayEventModel.Designer.cs">
+      <DependentUpon>201911232148442_UpdatedPlayEventModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911232149286_UpdatedPlayEventPlayDate.cs" />
+    <Compile Include="Migrations\201911232149286_UpdatedPlayEventPlayDate.Designer.cs">
+      <DependentUpon>201911232149286_UpdatedPlayEventPlayDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911261740522_RemoveRequiredParksProperties.cs" />
+    <Compile Include="Migrations\201911261740522_RemoveRequiredParksProperties.Designer.cs">
+      <DependentUpon>201911261740522_RemoveRequiredParksProperties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\JoinEventViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Park.cs" />
+    <Compile Include="Models\ParkEventViewModel.cs" />
     <Compile Include="Models\ParkSport.cs" />
     <Compile Include="Models\ParkSportViewModel.cs" />
     <Compile Include="Models\PlayEvent.cs" />
@@ -280,7 +294,6 @@
     <Content Include="Views\PlayEvents\Delete.cshtml" />
     <Content Include="Views\PlayEvents\Details.cshtml" />
     <Content Include="Views\PlayEvents\Edit.cshtml" />
-    <Content Include="Views\PlayEvents\Index.cshtml" />
     <Content Include="Views\Sports\Create.cshtml" />
     <Content Include="Views\Sports\Delete.cshtml" />
     <Content Include="Views\Sports\Details.cshtml" />
@@ -293,6 +306,8 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\GetSportSkillLvl.cshtml" />
     <Content Include="Views\Parks\ParkSportView.cshtml" />
+    <Content Include="Views\PlayEvents\ParkEvent.cshtml" />
+    <Content Include="Views\PlayEvents\ViewPlayEvents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -327,6 +342,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911222003436_Change.resx">
       <DependentUpon>201911222003436_Change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911232148442_UpdatedPlayEventModel.resx">
+      <DependentUpon>201911232148442_UpdatedPlayEventModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911232149286_UpdatedPlayEventPlayDate.resx">
+      <DependentUpon>201911232149286_UpdatedPlayEventPlayDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911261740522_RemoveRequiredParksProperties.resx">
+      <DependentUpon>201911261740522_RemoveRequiredParksProperties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

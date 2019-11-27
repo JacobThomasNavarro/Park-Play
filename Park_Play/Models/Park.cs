@@ -16,23 +16,23 @@ namespace Park_Play.Models
         [Display(Name = "Park")]
         public string parkName { get; set; }
 
-        [Required]
+        //[Required]
         [Display(Name = "Street Address")]
         public string streetAddress { get; set; }
 
-        [Required]
+        //[Required]
         [Display(Name = "City")]
         public string city { get; set; }
 
-        [Required]
+        //[Required]
         [Display(Name = "State Code")]
         public string stateCode { get; set; }
 
-        [Required]
+        //[Required]
         [Display(Name = "ZIP Code")]
         public int zipCode { get; set; }
 
-        [Required]
+        //[Required]
         [Display(Name = "Contact Number")]
         public double contactNumber { get; set; }
 

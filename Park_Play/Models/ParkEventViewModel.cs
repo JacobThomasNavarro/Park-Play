@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace Park_Play.Models
 {
-    public class PlayEvent
+    public class ParkEventViewModel
     {
-        [Key]
-        
-        public int PlayEventId { get; set; }
+        public Park Park { get; set; }
+        public List<Sport> SportsList { get; set; }
+        public Sport Sport { get; set; }
 
         [Required]
         [Display(Name = "Recommended Skill Level")]
@@ -35,13 +35,5 @@ namespace Park_Play.Models
         [Required]
         [Display(Name = "Number of Players")]
         public int numberOfPlayers { get; set; }
-
-        [ForeignKey("Park")]
-        public int ParkId { get; set; }
-        public Park Park { get; set; }
-
-        [ForeignKey("Sport")]
-        public int SportId { get; set; }
-        public Sport Sport { get; set; }
     }
 }
