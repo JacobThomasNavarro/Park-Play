@@ -9,6 +9,7 @@ namespace Park_Play
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            app.MapSignalR();
         }
     }
 }

@@ -43,6 +43,43 @@ namespace Park_Play.Controllers
             return View(parkSportView);
         }
 
+        public ActionResult ParkEvent(int id)
+        {
+            ParkEventViewModel parkEventView = new ParkEventViewModel() { Park = null, Sport = new Sport() { SportId = 1, sportName = "Soccer" } };
+            Park park = context.Parks.Where(p => p.ParkId == id).FirstOrDefault();
+            parkEventView.Park = park;
+            List<ParkSport> parkSport = context.ParkSports.Where(p => p.ParkId == park.ParkId).ToList();
+            List<Sport> sportList = new List<Sport>();
+            foreach (ParkSport model in parkSport)
+            {
+                var sport = context.Sports.Where(s => s.SportId == model.SportId).FirstOrDefault();
+                sportList.Add(sport);
+            }
+            ViewBag.Results = sportList;
+            parkEventView.SportsList = sportList;
+            return View(parkEventView);
+        }
+
+        [HttpPost]
+        public ActionResult ParkEvent(ParkEventViewModel parkEventView)
+        {
+            string id = User.Identity.GetUserId();
+            User user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
+            PlayEvent playEvent = new PlayEvent()
+            {
+                ParkId = parkEventView.Park.ParkId,
+                SportId = parkEventView.Sport.SportId,
+                PlayDate = parkEventView.PlayDate,
+                StartTime = parkEventView.StartTime,
+                EndTime = parkEventView.EndTime,
+                skillLevel = parkEventView.skillLevel,
+                numberOfPlayers = parkEventView.numberOfPlayers
+            };
+            context.PlayEvents.Add(playEvent);
+            context.SaveChanges();
+            return RedirectToAction("Index", "Home", user);
+        }
+
         // GET: Users/Details/5
         public ActionResult Details(int id)
         {

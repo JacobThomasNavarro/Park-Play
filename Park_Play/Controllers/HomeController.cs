@@ -26,5 +26,10 @@ namespace Park_Play.Controllers
 
             return View();
         }
+
+        public ActionResult Chat()
+        {
+            return View();
+        }
     }
 }

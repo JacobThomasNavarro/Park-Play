@@ -29,57 +29,11 @@ namespace Park_Play.Controllers
             return View(playEvent);
         }
 
-        public ActionResult ParkEvent(int id)
-        {
-            ParkEventViewModel parkEventView = new ParkEventViewModel() { Park = null, Sport = new Sport() { SportId = 1, sportName = "Soccer" } };
-            Park park = context.Parks.Where(p => p.ParkId == id).FirstOrDefault();
-            parkEventView.Park = park;
-            List<ParkSport> parkSport = context.ParkSports.Where(p => p.ParkId == park.ParkId).ToList();
-            List<Sport> sportList = new List<Sport>();
-            foreach(ParkSport model in parkSport)
-            {
-                var sport = context.Sports.Where(s => s.SportId == model.SportId).FirstOrDefault();
-                sportList.Add(sport);
-            }
-            ViewBag.Results = sportList;
-            parkEventView.SportsList = sportList;
-            return View(parkEventView);
-        }
-
-        [HttpPost]
-        public ActionResult ParkEvent(ParkEventViewModel parkEventView)
-        {
-            string id = User.Identity.GetUserId();
-            User user = context.Users.Where(u => u.ApplicationId == id).FirstOrDefault();
-            PlayEvent playEvent = new PlayEvent()
-            {
-                ParkId = parkEventView.Park.ParkId,
-                //Park = parkEventView.Park,
-                SportId = parkEventView.Sport.SportId,
-                //Sport = parkEventView.Sport,
-                PlayDate = parkEventView.PlayDate,
-                StartTime = parkEventView.StartTime,
-                EndTime = parkEventView.EndTime,
-                skillLevel = parkEventView.skillLevel,
-                numberOfPlayers = parkEventView.numberOfPlayers
-            };
-            //var parkObject = context.Parks.Where(p => p.ParkId == playEvent.ParkId).Single();
-            //playEvent.Park.streetAddress = parkObject.streetAddress;
-            //playEvent.Park.city = parkObject.city;
-            //playEvent.Park.stateCode = parkObject.stateCode;
-            //playEvent.Park.parkName = parkObject.parkName;
-            //var sportObject = context.Sports.Where(s => s.SportId == playEvent.SportId).Single();
-            //playEvent.Sport.sportName = sportObject.sportName;
-            context.PlayEvents.Add(playEvent);
-            context.SaveChanges();
-            return RedirectToAction("Index", "Home", user);
-        }
-
         public ActionResult ViewPlayEvents()
         {
-            
+
             var playEvent = context.PlayEvents.Include(s => s.Sport).Include(p => p.Park).ToList();
-            
+
             return View(playEvent);
         }
 
@@ -95,17 +49,44 @@ namespace Park_Play.Controllers
             };
             context.UserPlayEvents.Add(userPlayEvent);
             context.SaveChanges();
-            return RedirectToAction("Index", "Home", user);
+            return RedirectToAction("ViewPlayEvents", "PlayEvents");
+        }
+
+        public ActionResult PlayEventMembers(int id)
+        {
+            MembersViewModel membersView = new MembersViewModel() { PlayEvent = new PlayEvent(), UsersList = new List<User>() };
+            PlayEvent playEvent = context.PlayEvents.Where(p => p.PlayEventId == id).FirstOrDefault();
+            List<UserPlayEvent> userPlayEvents = context.UserPlayEvents.Where(u => u.PlayEventId == playEvent.PlayEventId).ToList();
+            List<User> users = new List<User>();
+            foreach (UserPlayEvent model in userPlayEvents)
+            {
+                var user = context.Users.Where(s => s.UserId == model.UserId).FirstOrDefault();
+                users.Add(user);
+            }
+            foreach (User model in users)
+            {
+                membersView.UsersList.Add(model);
+            }
+            return View(membersView);
         }
 
         public ActionResult LeavePlayEvent(int id)
         {
-            UserPlayEvent userPlayEvent = context.UserPlayEvents.Where(p => p.UserPlayEventId == id).FirstOrDefault();
-            string Userid = User.Identity.GetUserId();
-            User user = context.Users.Where(u => u.ApplicationId == Userid).FirstOrDefault();
+            UserPlayEvent userPlayEvent = context.UserPlayEvents.Include(s => s.User).Include(p => p.PlayEvent).FirstOrDefault();
             context.UserPlayEvents.Remove(userPlayEvent);
             context.SaveChanges();
-            return RedirectToAction("Index", "Home", user);
+            return RedirectToAction("ViewPlayEvents", "PlayEvents");
+        }
+
+        public ActionResult RecommendedPlayEvents(int id)
+        {
+            SkillSportUser skillSport = context.SkillSportUsers.Include(u => u.User).Include(s => s.Sport).FirstOrDefault();
+            PlayEvent playEvent = context.PlayEvents.Where(u => u.PlayEventId == id).FirstOrDefault();
+            if(playEvent.skillLevel == skillSport.skillLevel)
+            {
+                context.PlayEvents.ToList();
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Users/Edit/5

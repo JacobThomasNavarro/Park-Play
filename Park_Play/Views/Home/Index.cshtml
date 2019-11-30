@@ -2,30 +2,33 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Park & Play</h1>
-    <p class="lead">Connect with .</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+
+    <div class="jumbotron">
+        <h1>Park & Play</h1>
+        <p class="lead">Connecting users with a passion to play.</p>
+        <a class="weatherwidget-io" href="https://forecast7.com/en/43d04n87d91/milwaukee/?unit=us" data-label_1="MILWAUKEE" data-label_2="WEATHER" data-theme="original">MILWAUKEE WEATHER</a>
+        <script>
+    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+        </script>
+    </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>Parks</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            Take a look at local parks in your area!  Find out where they are located,
+            available sports and play events.
         </p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        @*<img src="~/Images/basektballcourt.jpg" width="250" height="250" alt="My Image"
+             style="opacity: 0.5;filter: alpha(opacity=50)" />*@
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <h2>Play Events</h2>
+        <p>Create or join a Play Event at the park of your choice!  Select your desired sport, skill level and number of players.</p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+

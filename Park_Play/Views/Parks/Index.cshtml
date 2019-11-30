@@ -52,7 +52,7 @@
         </td>
         <td>
             @Html.ActionLink("Park Details", "Details", new { id = item.ParkId })|
-            @Html.ActionLink("Sports at this Park", "ParkSportView")
+            @Html.ActionLink("Sports at this Park", "ParkSportView", new { id = item.ParkId })
         </td>
     </tr>
 }

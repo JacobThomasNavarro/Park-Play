@@ -34,29 +34,34 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.skillLevel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PlayDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.numberOfPlayers)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Park.parkName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sport.sportName)
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.skillLevel)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PlayDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StartTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EndTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.numberOfPlayers)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Park.parkName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Sport.sportName)
+    </td>
+    <td>
+        @Html.ActionLink("Join", "JoinPlayEvent", new { id = item.PlayEventId }) |
+        @Html.ActionLink("Leave", "LeavePlayEvent", new { id = item.PlayEventId }) |
+        @Html.ActionLink("Players", "PlayEventMembers", new { id = item.PlayEventId })
+    </td>
+</tr>
 }
 
 </table>
