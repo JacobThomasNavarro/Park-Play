@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace Park_Play.Controllers
 {
+    [Authorize]
     public class ParksController : Controller
     {
         ApplicationDbContext context;
@@ -77,7 +78,7 @@ namespace Park_Play.Controllers
             };
             context.PlayEvents.Add(playEvent);
             context.SaveChanges();
-            return RedirectToAction("Index", "Home", user);
+            return RedirectToAction("ViewPlayEvents", "PlayEvents");
         }
 
         // GET: Users/Details/5

@@ -8,30 +8,18 @@
 
 <br />
 <table class="table">
-    @*<tr>
-            <td>
-                @Html.DisplayNameFor(model => model.ParkName)
-            </td>
-            <td>
-                @Html.DisplayNameFor(model => model.SportsList[0].sportName)
-            </td>
-        </tr>*@
-    @*@for(int i = 0; i < Model.SportsList.Count; i++)*@
-    <tr>
-        @*<td>
-            @Html.DisplayFor(model => model.ParkName)
-        </td>*@
-        @for (int i = 0; i < Model.UsersList.Count; i++)
-        {
-            <td>
-                @Html.DisplayFor(model => model.UsersList[i].firstName)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.UsersList[i].lastName)
-            </td>
-        }
-    </tr>
-</table>
+        <tr>
+            @for (int i = 0; i < Model.UsersList.Count; i++)
+            {
+                <td>
+                    @Html.DisplayFor(model => model.UsersList[i].firstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.UsersList[i].lastName)
+                </td>
+            }
+        </tr>
+    </table>
 <td>
     @Html.ActionLink("Chat with Players", "Chat", "Home") |
 </td>

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Park_Play.Controllers
 {
+    [Authorize]
     public class PlayEventsController : Controller
     {
         ApplicationDbContext context;
@@ -70,7 +71,7 @@ namespace Park_Play.Controllers
             return View(membersView);
         }
 
-        public ActionResult LeavePlayEvent(int id)
+        public ActionResult LeavePlayEvent()
         {
             UserPlayEvent userPlayEvent = context.UserPlayEvents.Include(s => s.User).Include(p => p.PlayEvent).FirstOrDefault();
             context.UserPlayEvents.Remove(userPlayEvent);
