@@ -228,6 +228,7 @@
     <Compile Include="Models\ParkSport.cs" />
     <Compile Include="Models\ParkSportViewModel.cs" />
     <Compile Include="Models\PlayEvent.cs" />
+    <Compile Include="Models\RecommendedEventsViewModel.cs" />
     <Compile Include="Models\SkillSportUser.cs" />
     <Compile Include="Models\Sport.cs" />
     <Compile Include="Models\User.cs" />
@@ -322,6 +323,7 @@
     <Content Include="Views\PlayEvents\ViewPlayEvents.cshtml" />
     <Content Include="Views\PlayEvents\PlayEventMembers.cshtml" />
     <Content Include="Views\Home\Chat.cshtml" />
+    <Content Include="Views\PlayEvents\RecommendedPlayEvents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

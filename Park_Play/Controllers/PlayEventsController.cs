@@ -79,16 +79,21 @@ namespace Park_Play.Controllers
             return RedirectToAction("ViewPlayEvents", "PlayEvents");
         }
 
-        public ActionResult RecommendedPlayEvents(int id)
+        public ActionResult RecommendedPlayEvents()
         {
-            SkillSportUser skillSport = context.SkillSportUsers.Include(u => u.User).Include(s => s.Sport).FirstOrDefault();
-            PlayEvent playEvent = context.PlayEvents.Where(u => u.PlayEventId == id).FirstOrDefault();
-            if(playEvent.skillLevel == skillSport.skillLevel)
+            string Userid = User.Identity.GetUserId();
+            User user = context.Users.Where(u => u.ApplicationId == Userid).FirstOrDefault();
+            List<SkillSportUser> skillSportUser = context.SkillSportUsers.Where(s => s.UserId == user.UserId).ToList();
+            List<PlayEvent> playEvents = new List<PlayEvent>();
+            foreach (SkillSportUser model in skillSportUser)
             {
-                context.PlayEvents.ToList();
+                List<PlayEvent> events = context.PlayEvents.Where(p => p.SportId == model.SportId).ToList();
+                var recommendedEvents = events.Where(p => p.skillLevel == model.skillLevel).FirstOrDefault();
+                playEvents.Add(recommendedEvents);
             }
-            return RedirectToAction("Index", "Home");
+            return View();
         }
+
 
         // GET: Users/Edit/5
         public ActionResult Edit(int id)
