@@ -81,17 +81,19 @@ namespace Park_Play.Controllers
 
         public ActionResult RecommendedPlayEvents()
         {
+            RecommendedEventsViewModel recommendedEventsView = new RecommendedEventsViewModel() { PlayEvents = new List<PlayEvent>() };
             string Userid = User.Identity.GetUserId();
             User user = context.Users.Where(u => u.ApplicationId == Userid).FirstOrDefault();
             List<SkillSportUser> skillSportUser = context.SkillSportUsers.Where(s => s.UserId == user.UserId).ToList();
-            List<PlayEvent> playEvents = new List<PlayEvent>();
+            List<PlayEvent> PlayEvents = new List<PlayEvent>();
             foreach (SkillSportUser model in skillSportUser)
             {
                 List<PlayEvent> events = context.PlayEvents.Where(p => p.SportId == model.SportId).ToList();
                 var recommendedEvents = events.Where(p => p.skillLevel == model.skillLevel).FirstOrDefault();
-                playEvents.Add(recommendedEvents);
+                recommendedEventsView.PlayEvents.Add(recommendedEvents);
+                //sendText.SendSMS(user);  
             }
-            return View();
+            return View(recommendedEventsView);
         }
 
 
